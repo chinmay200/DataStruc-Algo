@@ -8,16 +8,21 @@ int main(){
     for(int i = 0; i < n; i++){
         cin >> arr[i];
     }
+    map<int,int> m;
+    int i = 0;
     int cnt = 0;
-    for (int i = 0; i < n; i++)
+    while (i < n)
     {
-        for (int j = i+1; j < n; j++)
-        {
-            if(arr[i]+arr[j] == k){
-                cnt++;
-            }
+        int x = k - arr[i];
+        if(m[x]){
+            cnt+= m[x];
+            m[arr[i]]++;
         }
-
+        else{
+            m[arr[i]] += 1;
+        }
+        i++;
     }
+    
     cout << cnt;
 }
