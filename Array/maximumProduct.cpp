@@ -3,17 +3,17 @@ using namespace std;
  
 int main(){
     int arr[5] = {6, -3, -10, 0, 2};
-    int prod = 1;
-    int cur = 1;
-    for (int i = 0; i < 5; i++)
+    int ma = arr[0];
+    int mi = arr[0];
+    int ans = arr[0];
+    for (int i = 1; i < 5; i++)
     {   
-        cur = arr[i];
-        for (int j = i+1; j < 5; j++)
-        {
-            cur = cur*arr[j];
-            cout << cur << endl;
-            prod = max(cur , prod);
+        if(arr[i] < 0){
+            swap(mi , ma);
         }
+        ma = max(ma*arr[i] , arr[i]);
+        mi = min(mi*arr[i] , arr[i]);
+        ans = max(ma , ans);
     }
-    cout << prod;
+    cout << ans;
 }
