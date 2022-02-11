@@ -5,6 +5,12 @@
         "chrono": "cpp",
         "algorithm": "cpp",
         "iostream": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "ratio": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp"
     }
 }
