@@ -8,22 +8,29 @@ int main(){
     // 20
     // 6 6 2 3 1 4 1 5 6 2 8 7 4 2 1 3 4 5 9 6
 
-    sort(arr , arr+n);
-        int len = 1;
-        int ans = 1;
+    set<int> s;
+    for (int i = 0; i < n; i++)
+    {
+        s.insert(arr[i]);
+    }
     
-        for(int i = 0; i < n;i++){
-            if(arr[i]+1 == arr[i+1]){
-                len += 1;
+    int ans = 1;
+    int len = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(!s.count(arr[i]-1)){
+            int num = arr[i];
+            len = 1;
+            while (s.count(num+1))
+            {
+                len+=1;
+                num+=1;
             }
-            else if(arr[i] == arr[i+1]){
-               continue; 
-            }
-            else{
-                len = 1;
-            }
-    
-            ans = max(len , ans);
+            
+            ans = max(ans , len);
         }
-        cout << ans;
+    }
+
+    cout << ans ; 
+    
 }
