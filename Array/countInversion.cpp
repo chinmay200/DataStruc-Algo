@@ -52,7 +52,7 @@ ll merge(ll arr[] , ll start , ll mid , ll end){
 
 int main()
 {
-    ll arr[5] = {2, 3, 4, 5, 6};
+    ll arr[5] = {8, 3, 4, 5, 6};
     ll count = mergeSort(arr, 0, 4);
     cout << count;
 }
