@@ -1,6 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+bool binSrc(vector<int> arr , int num){
+    int l = 0;
+    int e = arr.size()-1;
+
+    while (l >= e)
+    {
+        int  mid = ((e - l)/2) + l
+        if(arr[mid] < num){
+            l = mid+1;
+        }
+        else if(arr[mid] > num){
+            e = mid-1;
+        }
+        else{
+            return true;
+        }
+    }
+    return false;
+    
+}
+
 int main()
 {
     vector<int> arr;
@@ -26,36 +47,20 @@ int main()
         sub.push_back(temp);
     }
 
-    bool chk = true;
-    int cnt = 0;
-    sort(arr.begin(), arr.end());
-    sort(sub.begin(), sub.end());
+   map<int,int> m;
+   for (int i = 0; i < arr.size(); i++)
+   {
+       m[arr[i]] = 1;
+   }
 
-    int k = 0;
-    int j = 0;
-    while (k != arr.size())
-    {
-        if (k == arr.size() - 1 && cnt != sub.size())
-        {
-            chk = false;
-            cout << "No" << endl;
-            break;
+   for (int i = 0; i < sub.size(); i++)
+   {
+       if(!(m[sub[i]])){
+           return "No";
         }
-
-        else if (arr[k] < sub[j])
-        {
-            k++;
-        }
-
-        else
-        {
-            j++;
-            cnt++;
-        }
-    }
-
-    if (chk)
-    {
-        cout << "Yes" <<endl ;
-    }
+   }
+   
+   
+    
+    return "Yes";
 }
