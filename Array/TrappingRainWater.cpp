@@ -2,5 +2,15 @@
 using namespace std;
 
 int main(){
-    int arr[10] = {100 , 1,12,2,1,132,13,132,12};
+    int n;
+    cin >> n;
+    int arr[n];
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    
+    
 }
