@@ -17,13 +17,14 @@ int main()
     }
 
     sort(arr, arr + n);
-    int i = 0;
+       
+    int i = 0, j = m-1;
     int ans = INT_MAX;
-    while (i < n-m)
-    {
-        ans = min(ans , arr[m-1+i] - arr[i]);
-        i++;
+    while(j < n){
+        int diff = arr[j] - arr[i];
+        ans = min(ans,diff);
+        i++,j++;
     }
 
-    cout << ans;
+    cout <<  ans;
 }
