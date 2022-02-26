@@ -17,26 +17,23 @@ int main(){
     int strt,end;
     int mi = INT_MAX;
     int i = 0;
-    while (i < n)
+    int j = 1;
+    int sum = arr[i];
+    while (i < n && j < n)
     {
-        int sum = arr[i];
-        if(sum > x){
-                i = i+1;
-                end = i;
-                strt = i-1;
-                mi = min(mi , end-strt);
-            }
-        for (int j = i+1; j < n; j++)
-        {
-            sum+=arr[j];
-            if(sum > x){
-                end = j;
-                strt = i-1;
-                mi = min(mi , end-strt);
-            }
+        if (sum > x)
+        {   
+            strt = i;
+            end = j;
+            mi = min(mi , j-i);
+            sum-=arr[i];
+            i++;
+        }
+        else{
+            sum += arr[j];
+            j++;
         }
         
-        i++;
     }
 
     cout << mi;
