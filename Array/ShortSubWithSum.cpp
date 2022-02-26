@@ -16,10 +16,12 @@ int main(){
 
     int strt,end;
     int mi = INT_MAX;
-    for (int i = 0; i < n; i++)
+    int i = 0;
+    while (i < n)
     {
         int sum = arr[i];
         if(sum > x){
+                i = i+1;
                 end = i;
                 strt = i-1;
                 mi = min(mi , end-strt);
@@ -34,6 +36,7 @@ int main(){
             }
         }
         
+        i++;
     }
 
     cout << mi;
