@@ -45,12 +45,11 @@ int main(){
     int r = n-1;
     int i = 0;
     while(i < n && i < r){
-        if(arr[i] > b){
+        if(arr[i] >  b){
             int temp = arr[i];
             arr[i] = arr[r];
             arr[r] = temp;
             r--;
-            i-=2;
         }
 
         else if (arr[i] < a)
@@ -60,7 +59,11 @@ int main(){
             arr[l] = temp;
             l++;
         }
-        i++;
+
+        else{
+            i++;
+        }
+        
     }
     
     for (int i = 0; i < n; i++)
