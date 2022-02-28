@@ -14,11 +14,36 @@ int main(){
     int a,b;
     cin >> a >> b;
 
-    sort(arr , arr+n);
+    int ans[n] ;
+    int j = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(arr[i] <= a){
+            ans[j] = arr[i];
+            j++;
+        }
+    }
 
     for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << " ";
+        if(arr[i] > a && arr[i] <= b){
+            ans[j] = arr[i];
+            j++;
+        }
     }
+
+    for (int i = 0; i < n; i++)
+    {
+        if(arr[i] >= b){
+            ans[j] = arr[i];
+            j++;
+        }
+    }
+    
+    for (int i = 0; i < n; i++)
+    {
+        cout << ans[i] << " ";
+    }
+    
     
 }
