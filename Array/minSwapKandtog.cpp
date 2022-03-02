@@ -12,41 +12,41 @@ int main(){
     {
         cin >> arr[i];
     }
-    int cnt= 0;
-    
+    int fav= 0;
+    int cnt = 0;
     for (int i = 0; i < n; i++)
     {
         if(arr[i] <= x){
+            fav++;
+        }
+    }
+
+    for (int i = 0; i < fav; i++)
+    {
+        if(arr[i] > x){
             cnt++;
         }
     }
-
-    int i = 0;
-    int mi = INT_MAX;
-    int num = 0;
-    int smlCnt = 0;
-    // cout << cnt;
-    while (i < n)
+    
+    int res = INT_MAX;
+    int strt = 0;
+    int end = fav-1;
+    while (end < n)
     {
-
-        if (num <= cnt)
-        {
-            if (arr[i] <= x)
-            {
-                smlCnt++;
-            }
-            num++;
+        res = min(res , cnt);
+        end++;
+        if(arr[end] > x){
+            cnt++;
         }
-        else{
-            cout << smlCnt << endl;
-            mi = min(mi , cnt-smlCnt);
-            cout << mi;
-            num = 0;
+        if(arr[strt] > x){
+            cnt--;
         }
-        i++;
+        strt++;
     }
+    
 
-    cout << mi;
+
+    cout << res;
 //     11
 // 10 12 20 20 5 19 19 12 1 20 1
 // 1
