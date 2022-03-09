@@ -19,28 +19,30 @@ int main()
     }
 
     int i = 0;
-    int j = c-1;
-
-    int posi = 0, posj = 0;
+    int j = (r*c)-1;
+    
     int num;
     cin >> num;
+    int posi,posj;
 
-    while (i < r && j >= 0)
+    while (i <= j)
     {
-        if(arr[i][j] < num){
-            i++;
+        int mid = (i+j) / 2;
+        if(num > arr[mid/c][mid%c]){
+            i = mid + 1;
         }
-        else if(arr[i][j] > num){
-            j--;
+
+        else if(num < arr[mid/c][mid%c]){
+            j = mid - 1;
         }
         else{
-            posi = i;
-            posj = j;
+            posi = mid/c;
+            posj = mid%c;
             break;
         }
     }
-
+    
     cout << posi << " " << posj;    
-
+ 
     return false;
 }
