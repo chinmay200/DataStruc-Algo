@@ -18,22 +18,24 @@ int main()
         }
     }
 
-    int i = 0;
-    int j = (r*c)-1;
+    int low = 0;
+    int high = (r*c)-1;
     
     int num;
+    cout << "Elem : ";
     cin >> num;
-    int posi,posj;
+    int posi = -1;
+    int posj = -1;
 
-    while (i <= j)
+    while (low <= high)
     {
-        int mid = (i+j) / 2;
+        int mid = (low+high) / 2;
         if(num > arr[mid/c][mid%c]){
-            i = mid + 1;
+            low = mid + 1;
         }
 
         else if(num < arr[mid/c][mid%c]){
-            j = mid - 1;
+            high = mid - 1;
         }
         else{
             posi = mid/c;
@@ -42,7 +44,10 @@ int main()
         }
     }
     
-    cout << posi << " " << posj;    
- 
-    return false;
+    if(posj && posi){
+        cout << posi << " " << posj;
+    }
+    else{
+        cout << "Element not present";
+    }
 }
