@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+int main()
+{
     int r;
     cin >> r;
     int c;
@@ -17,36 +18,46 @@ int main(){
         }
     }
 
-    vector<int> temp;
+    int s = 0;
+    int e = 100000000;
 
-    for (int i = 0; i < r; i++)
+    int n = r * c;
+    while (s <= e)
     {
-        for (int j = 0; j < c; j++)
+        int mid = (s + e) / 2;
+        int smaller = 0;
+
+        for (int i = 0; i < r; i++)
         {
-            // cout << arr[i][]
-            temp.push_back(arr[i][j]);
+            int lo = 0;
+            int high = c - 1;
+
+            while (lo <= high)
+            {
+                int m = (high - lo) / 2 + lo;
+
+                if (arr[i][m] <= mid)
+                {
+                    lo = m + 1;
+                }
+                else
+                {
+                    high = m - 1;
+                }
+            }
+
+            smaller += lo;
         }
-        
+
+        if (smaller <= n / 2)
+        {
+            s = mid + 1;
+        }
+        else
+        {
+            e = mid - 1;
+        }
     }
 
-    sort(temp.begin() , temp.end());
-
-    int n = temp.size();
-
-     cout << endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << temp[i] << " ";
-    }
-    
-
-    int mid = n/2;
-
-    if((r*c)%2 == 0){
-        cout << (temp[mid] + temp[mid+1])/2;
-    }
-    else{
-        cout << temp[mid];
-    }
-    
+    cout << s;
 }
