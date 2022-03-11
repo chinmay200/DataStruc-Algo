@@ -30,11 +30,6 @@ int main(){
         }
     }
     
-    for (int i = 0; i < bin.length(); i++)
-    {
-        cout << bin[i];
-    }
-    
     int num = 0;
     binToDec(b , num);
     cout << endl;
