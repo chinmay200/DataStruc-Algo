@@ -17,20 +17,25 @@ int main(){
         }
     }
 
-    int row = 0;
-    int i = m-1;
-    int j = 0;
-    while (i >= 0 && j < n)
+    int row = -1;
+    int col = m-1;
+
+    for (int i = 0; i < n; i++)
     {
-        if(arr[i][j] == 0){
-            j++;
+        for (int j = col; j >= 0; j--)
+        {
+            if(arr[i][j] == 1){
+                row = i;
+                col--;
+            }
+            else{
+                break;
+            }
         }
-        else if(arr[i][j] == 1){
-            i--;
-            row = j;
-        }
+        
     }
     
+
     cout << row;
 
 }
