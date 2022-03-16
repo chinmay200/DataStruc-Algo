@@ -17,30 +17,18 @@ int main(){
         }
     }
 
-    int row = -1;
-    int index = m;
-    for (int i = 0; i < n; i++)
+    int row = 0;
+    int i = m-1;
+    int j = 0;
+    while (i >= 0 && j < n)
     {
-        int low = 0;
-        int high = m - 1;
-        int mid;
-        while(low <= high){
-            
-            mid = (high-low)/2 +low;
-            if(arr[i][mid] == 0){
-                low = mid + 1;
-            }
-            else{
-                high = mid - 1;
-            }
-
+        if(arr[i][j] == 0){
+            j++;
         }
-
-        if(low < index){
-            index = low;
-            row = i;
+        else if(arr[i][j] == 1){
+            i--;
+            row = j;
         }
-
     }
     
     cout << row;
