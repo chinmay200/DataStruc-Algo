@@ -17,23 +17,30 @@ int main(){
         }
     }
 
-    int mxcnt =0;
     int row = -1;
-
+    int index = m;
     for (int i = 0; i < n; i++)
     {
-        int cnt = 0;
-        for (int j = 0; j < m; j++)
-        {
-            if(arr[i][j] == 1){
-                cnt++;
+        int low = 0;
+        int high = m - 1;
+        int mid;
+        while(low <= high){
+            
+            mid = (high-low)/2 +low;
+            if(arr[i][mid] == 0){
+                low = mid + 1;
             }
+            else{
+                high = mid - 1;
+            }
+
         }
 
-        if(cnt > mxcnt){
-            mxcnt = cnt;
+        if(low < index){
+            index = low;
             row = i;
         }
+
     }
     
     cout << row;
