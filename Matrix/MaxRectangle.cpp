@@ -54,7 +54,7 @@ int maxArea(int arr[] , int n){
 
     for (int i = 0; i < n; i++)
     {
-        int sol = (nex[i] - prev[i] - 1) * arr[i];
+        int sol = (nex[i] - prev[i] + 1) * arr[i];
         ans = max(sol , ans);
     }
     return ans;
@@ -79,14 +79,25 @@ int main(){
         }
     }
 
+    int cur[m];
+    int i = 0;
+    for (int j = 0; j < m; j++)
+    {
+        cur[j] = arr[i][j];
+    }
     int mx = 0;
     for (int i = 0; i < n; i++)
     {
-        int cur[m];
         for (int j = 0; j < m; j++)
         {
-            cur[j] = arr[i][j];
+            if(arr[i][j] == 0){
+                cur[j] = 0;
+            }
+            else{
+                cur[j]++;
+            }
         }
+        
 
         int as = maxArea(cur , n);
         mx = max(mx , as);
