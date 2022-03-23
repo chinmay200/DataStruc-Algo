@@ -1,69 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-void prevSmaller(int arr[] , int n, vector<int> &res){
-    stack<int> num;
+int maxArea(int arr[], int n)
+{
+    stack<int> s;
+    int prev[n];
     for (int i = 0; i < n; i++)
     {
-        while (!num.empty() && arr[num.top()] >= arr[i])
+        while (!s.empty() && arr[s.top()] >= arr[i])
         {
-            num.pop();
+            s.pop();
         }
 
-        if(num.empty()){
-            res.push_back(-1);
+        if (s.empty())
+        {
+            prev[i] = -1;
         }
-        else{
-            res.push_back(num.top());
+
+        else
+        {
+            prev[i] = s.top();
         }
-        num.push(i); 
+
+        s.push(i);
     }
-}
-
-
-void nextSmaller(int arr[] , int n ,vector<int> &res){
-    stack<int> num;
-    int k = 0;
-    for (int i = n-1; i >= 0; i--)
+    stack<int> m;
+    int next[n];
+    for (int i = n - 1; i >= 0; i--)
     {
-        while (!num.empty() && arr[num.top()] >= arr[i])
+        while (!m.empty() && arr[m.top()] >= arr[i])
         {
-            num.pop();
+            m.pop();
         }
 
-        if(num.empty()){
-            res.push_back(n);
+        if (m.empty())
+        {
+            next[i] = n;
         }
-        else{
-            res.push_back(num.top());
+        else
+        {
+            next[i] = m.top();
         }
-        num.push(i);
-        
+        m.push(i);
     }
-    reverse(res.begin() , res.end());
-}
 
-int maxArea(int arr[] , int n){
     int ans = 0;
-    vector<int> prev;
-    vector<int> nex;
-
-    prevSmaller(arr , n , prev);
-    nextSmaller(arr , n , nex);
-
     for (int i = 0; i < n; i++)
     {
-        int sol = (nex[i] - prev[i] + 1) * arr[i];
-        ans = max(sol , ans);
+        ans = max(ans, (next[i] - prev[i] - 1) * arr[i]);
     }
+
     return ans;
-    
 }
 
-
-
-int main(){
+int main()
+{
     int n;
     cin >> n;
     int m;
@@ -80,29 +71,53 @@ int main(){
     }
 
     int cur[m];
-    int i = 0;
     for (int j = 0; j < m; j++)
     {
-        cur[j] = arr[i][j];
+        cur[j] = arr[0][j];
     }
-    int mx = 0;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if(arr[i][j] == 0){
-                cur[j] = 0;
-            }
-            else{
-                cur[j]++;
-            }
-        }
-        
 
-        int as = maxArea(cur , n);
-        mx = max(mx , as);
+    stack<int> p;
+    int prev[m];
+
+    for (int i = 0; i < m; i++)
+    {
+        while (!p.empty() && cur[p.top()] >= cur[i])
+        {
+            p.pop();
+        }
+
+        if (p.empty())
+        {
+            prev[i] = -1;
+        }
+        else
+        {
+            prev[i] = p.top();
+        }
+        p.push(i);
     }
-    
-    cout << mx;
-    
+
+    while (!p.empty())
+    {
+        p.pop();
+    }
+
+    int nex[m];
+    for (int i = m; i > -1; i--)
+    {
+        while (!p.empty() && cur[p.top()] >= cur[i])
+        {
+            p.pop();
+        }
+        if (p.empty())
+        {
+            nex[i] = -1;
+        }
+        else
+        {
+            nex[i] = p.top();
+        }
+        p.push(i);
+    }
+
 }
