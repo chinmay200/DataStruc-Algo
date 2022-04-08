@@ -10,8 +10,18 @@ int prevmin(int arr[] , int i){
             break;
         }
     }
-    
+    return x;
+}
 
+int nextmin(int arr[] , int i , int n){
+    int x = n;
+    for (int j = i; j < n; j++)
+    {
+        if(arr[j] < arr[i]){
+            x = j;
+            break;
+        }
+    }
     return x;
 }
 
@@ -27,6 +37,7 @@ int main()
     }
 
     cout << prevmin(arr , 3);
+    cout << nextmin(arr , 3 , n);
     
     
     // cout << ans;
