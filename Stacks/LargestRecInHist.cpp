@@ -6,7 +6,6 @@ int main()
     int n;
     cin >> n;
     int arr[n];
-
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
@@ -33,25 +32,24 @@ int main()
 
         s.push(i);
     }
-
-    stack<int> m;
+    stack<int> mn;
     int next[n];
     for (int i = n - 1; i >= 0; i--)
     {
-        while (!m.empty() && arr[m.top()] >= arr[i])
+        while (!mn.empty() && arr[mn.top()] >= arr[i])
         {
-            m.pop();
+            mn.pop();
         }
 
-        if (m.empty())
+        if (mn.empty())
         {
             next[i] = n;
         }
         else
         {
-            next[i] = m.top();
+            next[i] = mn.top();
         }
-        m.push(i);
+        mn.push(i);
     }
 
     int ans = 0;
