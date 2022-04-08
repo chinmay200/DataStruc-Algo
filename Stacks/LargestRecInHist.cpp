@@ -3,11 +3,14 @@ using namespace std;
 
 int prevmin(int arr[] , int i){
     int x = -1;
-    int pos = i;
-    while(arr[i] <= arr[pos]){
-        pos--;
-        x = pos;
+    for (int j = i; j > -1; j--)
+    {
+        if(arr[i] > arr[j]){
+            x = j;
+            break;
+        }
     }
+    
 
     return x;
 }
@@ -23,15 +26,8 @@ int main()
         cin >> arr[i];
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        int l = prevmin(arr , i);
-        int r = nextmin(arr , i , n);
-
-        l++ , r++;
-        ans = max(ans , (r-l)*arr[i]);
-    }
+    cout << prevmin(arr , 3);
     
     
-    cout << ans;
+    // cout << ans;
 }
