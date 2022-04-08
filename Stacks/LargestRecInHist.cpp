@@ -36,9 +36,17 @@ int main()
         cin >> arr[i];
     }
 
-    cout << prevmin(arr , 3);
-    cout << nextmin(arr , 3 , n);
-    
-    
-    // cout << ans;
+
+    for (int i = 0; i < n; i++)
+    {
+        int l = prevmin(arr , i);
+        int r = nextmin(arr , i , n);
+
+        l++;
+        r--;
+
+        ans = max(ans , (r-l+1)*arr[i]);
+    }
+        cout << ans;
 }
+// [2,1,5,6,2,3]
